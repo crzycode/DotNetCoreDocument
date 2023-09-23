@@ -1,2 +1,5 @@
 PropertyInfo[] allProps = typeof(BrandModel).GetProperties();
 return allProps;
+
+or//
+PropertyInfo[] properties = Models.GetType().GetProperties();
