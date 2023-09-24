@@ -1,0 +1,57 @@
+  data.Add(bg);
+
+
+             var rem = bg.Count % 3;
+
+             devided = (bg.Count - rem) / 3;
+             ParameterizedThreadStart obj = new ParameterizedThreadStart(method1);
+
+             Thread t1 = new Thread(obj);
+             ParameterizedThreadStart obj2 = new ParameterizedThreadStart(method2);
+
+             Thread t2 = new Thread(obj2);
+             ParameterizedThreadStart obj3 = new ParameterizedThreadStart(method3);
+
+             Thread t3 = new Thread(obj3);
+
+             t1.Start(devided);
+
+             t2.Start((devided + devided));
+
+             t3.Start((devided + devided + devided));
+             t1.Join();
+             t2.Join();
+             t3.Join();
+
+
+
+
+        static void method1(object two)
+        {
+            
+            for (var i = 0; i < Convert.ToInt32(two); i++)
+            {
+                BrandModel json = JsonConvert.DeserializeObject<BrandModel>(data[0][i]);
+                brandModels.Add(json);
+            }
+        }
+        static void method2(object two)
+        {
+
+
+            for (var i = (devided+1); i < Convert.ToInt32(two); i++)
+            {
+                BrandModel json = JsonConvert.DeserializeObject<BrandModel>(data[0][i]);
+                brandModels.Add(json);
+            }
+        }
+        static void method3(object two)
+        {
+            
+
+            for (var i = (devided+devided+1); i < Convert.ToInt32(two); i++)
+            {
+                BrandModel json = JsonConvert.DeserializeObject<BrandModel>(data[0][i]);
+                brandModels.Add(json);
+            }
+        }
